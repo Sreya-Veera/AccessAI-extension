@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "AccessAI",
+  "version": "1.0.0",
+  "description": "AI-powered accessibility for every website",
+  "permissions": ["activeTab", "storage"],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background/background.js"
+  }
+}
