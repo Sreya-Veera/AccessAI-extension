@@ -52,23 +52,241 @@
   justify-content: center;
   margin-left: 4px;
   transition: background 0.2s;
+  font-size: 16px;
 }
 
 .accessai-close:hover {
   background: rgba(255,255,255,0.3);
 }
 
-.accessai-vision img.accessai-needs-description {
-  outline: 3px dashed #ff6b6b;
-  outline-offset: 2px;
-  cursor: help;
+/* Floating Button */
+.accessai-floating-button {
+  animation: buttonPop 0.3s ease-out;
 }
 
-.accessai-vision img.accessai-needs-description:hover {
-  outline-color: #ff4757;
+@keyframes buttonPop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
+.accessai-describe-btn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  white-space: nowrap;
+}
+
+.accessai-describe-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.5);
+}
+
+.accessai-describe-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Tooltip */
+.accessai-tooltip {
+  animation: tooltipFadeIn 0.3s ease-out;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.accessai-tooltip-content {
+  background: white;
+  border: 3px solid #667eea;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  position: relative;
+  min-width: 200px;
+}
+
+.accessai-tooltip-content strong {
+  display: block;
+  color: #667eea;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.accessai-tooltip-content p {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.accessai-tooltip-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #f0f0f0;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.accessai-tooltip-close:hover {
+  background: #e0e0e0;
+}
+
+/* Motor Mode */
 .accessai-motor *:focus {
   outline: 3px solid #4CAF50 !important;
   outline-offset: 2px !important;
+}
+/* Cognitive Toolbar */
+.accessai-cognitive-toolbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999998;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateX(-50%) translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+.accessai-toolbar-content {
+  background: white;
+  border: 2px solid #667eea;
+  border-radius: 50px;
+  padding: 12px 20px;
+  display: flex;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.accessai-tool-btn {
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  white-space: nowrap;
+}
+
+.accessai-tool-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.accessai-tool-btn.active {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+}
+
+/* Focus Mode */
+.accessai-focus-mode * {
+  transition: opacity 0.3s !important;
+}
+
+.accessai-focus-mode img,
+.accessai-focus-mode video,
+.accessai-focus-mode iframe,
+.accessai-focus-mode aside,
+.accessai-focus-mode nav {
+  opacity: 0.2 !important;
+}
+
+/* Motor Toolbar */
+.accessai-motor-toolbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999998;
+  animation: slideUp 0.3s ease-out;
+}
+
+.accessai-tool-info {
+  padding: 10px 20px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 20px;
+  font-size: 13px;
+  color: #667eea;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Speech Feedback */
+.accessai-speech-feedback {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 999997;
+  animation: slideIn 0.3s ease-out;
+  max-width: 300px;
+}
+
+.accessai-feedback-content {
+  background: white;
+  border: 2px solid #4CAF50;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.accessai-feedback-content strong {
+  display: block;
+  color: #4CAF50;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.accessai-feedback-content p {
+  margin: 0;
+  color: #333;
+  font-size: 13px;
+  line-height: 1.5;
 }
